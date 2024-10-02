@@ -1,0 +1,29 @@
+﻿@model Uppgift_3.Models.Driver
+
+@{
+    ViewData["Title"] = "Edit Driver";
+}
+
+<h2>Edit Driver</h2>
+
+<form asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="DriverID" class="control-label"></label>
+        <input asp-for="DriverID" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label asp-for="DriverName" class="control-label"></label>
+        <input asp-for="DriverName" class="form-control" />
+        <span asp-validation-for="DriverName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="DriverIndex" class="btn btn-secondary">Cancel</a>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Uppgift_3.Models.Incident>
+
+@{
+    ViewData["Title"] = "Welcome";
+}
+
+<h2>Incidents</h2>
+
+<div class="filter-section">
+    <form asp-action="Welcome" method="get" class="row mb-3">
+        <div class="col-md-4">
+            <label for="startTime">Start Time:</label>
+            <input type="datetime-local" name="startTime" value="@ViewBag.FilterStartTime.ToString("yyyy-MM-ddTHH:mm:ss")" class="form-control" />
+        </div>
+        <div class="col-md-4">
+            <label for="endTime">End Time:</label>
+            <input type="datetime-local" name="endTime" value="@ViewBag.FilterEndTime.ToString("yyyy-MM-ddTHH:mm:ss")" class="form-control" />
+        </div>
+        <div class="col-md-4 align-self-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Incident ID</th>
+            <th>Description</th>
+            <th>Time of Incident</th>
+            <th>Driver Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var incident in Model)
+        {
+                <tr>
+                    <td>@incident.IncidentId</td>
+                    <td>@incident.Description</td>
+                    <td>@incident.TimeOfIncident.ToString("g")</td>
+                    <td>@incident.Driver?.DriverName</td>
+                </tr>
+        }
+    </tbody>
+</table>
+
+<form asp-action="Logout" method="get">
+    <button type="submit" class="btn btn-danger">Log Out</button>
+</form>

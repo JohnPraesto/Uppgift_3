@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Uppgift_3.Models.Driver>
+
+@{
+    ViewData["Title"] = "Drivers";
+}
+
+<h2>Drivers</h2>
+
+<div class="mb-3">
+    <a asp-controller="Driver" asp-action="CreateDriver" class="btn btn-primary">Create New Driver</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Driver Name</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var driver in Model)
+        {
+            <tr>
+                <td>@driver.DriverID</td>
+                <td>@driver.DriverName</td>
+                <td>
+                    <a asp-controller="Driver" asp-action="Details" asp-route-id="@driver.DriverID">Details</a>
+                    <a asp-controller="Driver" asp-action="Edit" asp-route-id="@driver.DriverID">Edit</a>
+                    <a asp-controller="Driver" asp-action="AddIncident" asp-route-id="@driver.DriverID">Add Incident</a>
+                    <a asp-controller="Driver" asp-action="Delete" asp-route-id="@driver.DriverID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

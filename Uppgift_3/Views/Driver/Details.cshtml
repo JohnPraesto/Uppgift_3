@@ -1,0 +1,58 @@
+﻿@model Uppgift_3.Models.Driver
+
+@{
+    ViewData["Title"] = "Driver Details";
+}
+
+<h2>Driver Details</h2>
+
+<div>
+    <h4>Driver</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Driver ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DriverID
+        </dd>
+        <dt class="col-sm-2">
+            Driver Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.DriverName
+        </dd>
+    </dl>
+</div>
+
+<h4>Incidents</h4>
+@if (Model.Incidents != null && Model.Incidents.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Incident ID</th>
+                <th>Description</th>
+                <th>Time of Incident</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var incident in Model.Incidents)
+            {
+                <tr>
+                    <td>@incident.IncidentId</td>
+                    <td>@incident.Description</td>
+                    <td>@incident.TimeOfIncident</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No incidents recorded for this driver.</p>
+}
+
+<div>
+    <a asp-action="DriverIndex">Back to List</a>
+</div>
