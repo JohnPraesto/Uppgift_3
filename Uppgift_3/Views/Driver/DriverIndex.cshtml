@@ -10,6 +10,17 @@
     <a asp-controller="Driver" asp-action="CreateDriver" class="btn btn-primary">Create New Driver</a>
 </div>
 
+<div class="search-section mb-3">
+    <form asp-action="DriverIndex" method="get" class="row">
+        <div class="col-md-8">
+            <input type="text" name="searchString" value="@ViewContext.HttpContext.Request.Query["searchString"]" class="form-control" placeholder="Search by name" />
+        </div>
+        <div class="col-md-4">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+
 <table class="table">
     <thead>
         <tr>

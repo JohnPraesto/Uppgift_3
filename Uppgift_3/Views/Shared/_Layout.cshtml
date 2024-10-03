@@ -39,7 +39,7 @@
                     @if (HttpContextAccessor.HttpContext.Session.GetString("IsAdmin") == "True")
                     {
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Employee" asp-action="Index">Employees</a>
+                            <a class="nav-link" asp-controller="Employee" asp-action="EmployeeIndex">Employees</a>
                         </li>
                     }
                     else

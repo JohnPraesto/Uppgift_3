@@ -1,0 +1,42 @@
+﻿@model Uppgift_3.Models.Employee
+
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Employee ID
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EmployeeId
+        </dd>
+        <dt class="col-sm-2">
+            Employee Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.EmployeeName
+        </dd>
+        <dt class="col-sm-2">
+            Password
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Password
+        </dd>
+        <dt class="col-sm-2">
+            Is Admin
+        </dt>
+        <dd class="col-sm-10">
+            @Model.IsAdmin.ToString()
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="EmployeeIndex">Back to List</a>
+</div>

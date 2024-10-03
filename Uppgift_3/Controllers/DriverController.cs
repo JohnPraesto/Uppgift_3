@@ -13,11 +13,19 @@ namespace Uppgift_3.Controllers
         {
             _db = db;
         }
-        public IActionResult DriverIndex()
+
+        public IActionResult DriverIndex(string searchString)
         {
-            var drivers = _db.Drivers.ToList(); // Fetch all drivers from the database
-            return View(drivers);
+            var drivers = _db.Drivers.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                drivers = drivers.Where(d => d.DriverName.Contains(searchString));
+            }
+
+            return View(drivers.ToList());
         }
+
 
         public IActionResult CreateDriver()
         {
